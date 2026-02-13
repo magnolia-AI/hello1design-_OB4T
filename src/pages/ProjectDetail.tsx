@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Star, ShieldCheck, Heart, Share2, Layers, Palette, Cpu, Wind } from "lucide-react";
+import { useEffect } from "react";
 
 const VIBE_CATEGORIES = [
   { name: "Aesthetic", icon: Palette, score: 9.8, color: "text-vibe-accent" },
@@ -9,8 +10,12 @@ const VIBE_CATEGORIES = [
 ];
 
 export default function ProjectDetail() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen pt-24 pb-20 px-6">
+    <div className="min-h-screen pt-24 pb-20 px-6 bg-vibe-black">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr,400px] gap-12">
         
         {/* Left Column: Visuals & Reviews */}
@@ -19,7 +24,7 @@ export default function ProjectDetail() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="relative aspect-video rounded-3xl overflow-hidden glass-card group"
+              className="relative aspect-video rounded-3xl overflow-hidden glass-card group border border-white/5"
             >
               <img 
                 src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1200" 
@@ -33,8 +38,8 @@ export default function ProjectDetail() {
                     <p className="text-vibe-accent font-mono tracking-widest text-sm uppercase">by Cosmic Labs</p>
                   </div>
                   <div className="flex gap-4">
-                    <button className="glass-card p-3 rounded-full"><Share2 className="w-5 h-5" /></button>
-                    <button className="glass-card p-3 rounded-full text-vibe-pink"><Heart className="w-5 h-5" /></button>
+                    <button className="glass-card p-3 rounded-full hover:bg-white/10 transition-colors"><Share2 className="w-5 h-5" /></button>
+                    <button className="glass-card p-3 rounded-full text-vibe-pink hover:bg-vibe-pink/10 transition-colors"><Heart className="w-5 h-5" /></button>
                   </div>
                 </div>
               </div>
@@ -49,7 +54,8 @@ export default function ProjectDetail() {
                 key={i}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                className="glass-card p-6 rounded-2xl space-y-4"
+                viewport={{ once: true }}
+                className="glass-card p-6 rounded-2xl space-y-4 border border-white/5"
               >
                 <div className="flex justify-between items-start">
                   <div className="flex gap-3 items-center">
@@ -59,15 +65,15 @@ export default function ProjectDetail() {
                       <p className="text-xs text-white/40">Vetted Reviewer</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 bg-white/5 px-2 py-1 rounded-md text-sm font-mono text-vibe-accent">
-                    {9.5 - (i * 0.2)} / 10
+                  <div className="flex items-center gap-1 bg-white/5 px-2 py-1 rounded-md text-sm font-mono text-vibe-accent border border-vibe-accent/20">
+                    {(9.5 - (i * 0.2)).toFixed(1)} / 10
                   </div>
                 </div>
                 <p className="text-white/70 leading-relaxed italic">
                   "The micro-interactions in Nebula OS are absolutely unparalleled. Every hover feels purposeful. The way the light refracts through the glass components is chef's kiss."
                 </p>
                 <div className="flex gap-4 text-xs font-mono text-white/30 truncate">
-                  <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3" /> VERIFIED VIBE</span>
+                  <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3 text-vibe-accent" /> VERIFIED VIBE</span>
                   <span>2 DAYS AGO</span>
                 </div>
               </motion.div>
@@ -77,7 +83,7 @@ export default function ProjectDetail() {
 
         {/* Right Column: Vibe Matrix & CTA */}
         <aside className="space-y-8">
-          <div className="glass-card p-8 rounded-3xl sticky top-24">
+          <div className="glass-card p-8 rounded-3xl sticky top-24 border border-white/5">
             <h3 className="text-xl font-bold mb-6 text-center italic">THE VIBE MATRIX</h3>
             
             <div className="space-y-6 mb-8">
@@ -107,7 +113,7 @@ export default function ProjectDetail() {
               <p className="text-5xl font-black text-white">9.6</p>
             </div>
 
-            <button className="w-full py-4 bg-vibe-accent text-black font-black rounded-xl mb-4 hover:scale-[1.02] transition-transform">
+            <button className="w-full py-4 bg-vibe-accent text-black font-black rounded-xl mb-4 hover:scale-[1.02] active:scale-[0.98] transition-all">
               DROP A REVIEW
             </button>
             <p className="text-[10px] text-center text-white/40 font-mono">
@@ -115,13 +121,13 @@ export default function ProjectDetail() {
             </p>
           </div>
 
-          <div className="glass-card p-6 rounded-3xl">
+          <div className="glass-card p-6 rounded-3xl border border-white/5">
             <h4 className="font-bold mb-4 flex items-center gap-2">
               <Layers className="w-4 h-4 text-vibe-accent" /> Tech Stack
             </h4>
             <div className="flex flex-wrap gap-2">
               {["React 19", "Three.js", "Zustand", "Framer Motion", "Shaders"].map(tech => (
-                <span key={tech} className="px-3 py-1 rounded-lg bg-white/5 text-xs font-mono">{tech}</span>
+                <span key={tech} className="px-3 py-1 rounded-lg bg-white/5 text-xs font-mono border border-white/5 hover:border-vibe-accent/30 transition-colors cursor-default">{tech}</span>
               ))}
             </div>
           </div>
@@ -131,4 +137,3 @@ export default function ProjectDetail() {
     </div>
   );
 }
-
