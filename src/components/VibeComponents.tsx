@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Zap, Eye, MousePointer2 } from "lucide-react";
+import { Star, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface VibeCardProps {
@@ -15,41 +15,39 @@ export const VibeCard = ({ id, name, creator, rating, image, tags }: VibeCardPro
   return (
     <Link to={`/project/${id}`}>
       <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -8 }}
-      className="glass-card rounded-2xl overflow-hidden group cursor-pointer"
-    >
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <img 
-          src={image} 
-          alt={name} 
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-vibe-black/80 to-transparent" />
-        <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-          <div>
-            <p className="text-xs font-mono text-vibe-accent uppercase tracking-widest mb-1">{creator}</p>
-            <h3 className="text-xl font-bold">{name}</h3>
-          </div>
-          <div className="flex items-center gap-1 bg-black/40 backdrop-blur-md px-2 py-1 rounded-full border border-white/10">
-            <Star className="w-3 h-3 fill-vibe-accent text-vibe-accent" />
-            <span className="text-sm font-mono">{rating.toFixed(1)}</span>
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        whileHover={{ y: -8 }}
+        className="glass-card rounded-2xl overflow-hidden group cursor-pointer"
+      >
+        <div className="relative aspect-[4/3] overflow-hidden">
+          <img 
+            src={image} 
+            alt={name} 
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-vibe-black/80 to-transparent" />
+          <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+            <div>
+              <p className="text-xs font-mono text-vibe-accent uppercase tracking-widest mb-1">{creator}</p>
+              <h3 className="text-xl font-bold">{name}</h3>
+            </div>
+            <div className="flex items-center gap-1 bg-black/40 backdrop-blur-md px-2 py-1 rounded-full border border-white/10">
+              <Star className="w-3 h-3 fill-vibe-accent text-vibe-accent" />
+              <span className="text-sm font-mono">{rating.toFixed(1)}</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="p-4 flex flex-wrap gap-2">
-        {tags.map(tag => (
-          <span key={tag} className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-white/5 bg-white/5 text-white/60">
-            {tag}
-          </span>
+        <div className="p-4 flex flex-wrap gap-2">
+          {tags.map(tag => (
+            <span key={tag} className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-white/5 bg-white/5 text-white/60">
+              {tag}
+            </span>
+          ))}
+        </div>
       </motion.div>
     </Link>
-
-        ))}
-      </div>
-    </motion.div>
   );
 };
 
@@ -93,3 +91,4 @@ export const VibeHero = () => (
     </motion.div>
   </section>
 );
+
