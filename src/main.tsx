@@ -1,18 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { RootLayout } from '@/layouts/RootLayout'
-import { HomePage } from '@/pages/HomePage'
 import './index.css'
+import RootLayout from './layouts/RootLayout'
+import HomePage from './pages/HomePage'
+import ProjectDetail from './pages/ProjectDetail'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route element={<RootLayout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>,
+  </StrictMode>,
 )
+
