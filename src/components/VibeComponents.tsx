@@ -13,13 +13,13 @@ interface VibeCardProps {
 
 export const VibeCard = ({ id, name, creator, rating, image, tags }: VibeCardProps) => {
   return (
-    <Link to={`/project/${id}`}>
+    <Link to={`/project-${id}`}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         whileHover={{ y: -8 }}
-        className="glass-card rounded-2xl overflow-hidden group cursor-pointer"
+        className="glass-card rounded-2xl overflow-hidden group cursor-pointer border border-white/5"
       >
         <div className="relative aspect-[4/3] overflow-hidden">
           <img 
@@ -91,4 +91,3 @@ export const VibeHero = () => (
     </motion.div>
   </section>
 );
-
