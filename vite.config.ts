@@ -10,6 +10,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  cacheDir: '/tmp/.vite
   server: {
     port: 5173,
     host: true,
